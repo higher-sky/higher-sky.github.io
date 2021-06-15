@@ -6,7 +6,7 @@
   <link href="http://higher-sky.github.io/atom.xml" rel="self"/>
   
   <link href="http://higher-sky.github.io/"/>
-  <updated>2021-06-06T11:45:07.628Z</updated>
+  <updated>2021-06-15T11:34:47.638Z</updated>
   <id>http://higher-sky.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>协会平台题目</title>
+    <link href="http://higher-sky.github.io/2021/0615undefined.html"/>
+    <id>http://higher-sky.github.io/2021/0615undefined.html</id>
+    <published>2021-06-14T16:00:00.000Z</published>
+    <updated>2021-06-15T11:34:47.638Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;pyre&quot;&gt;&lt;a href=&quot;#pyre&quot; class=&quot;headerlink&quot; title=&quot;pyre&quot;&gt;&lt;/a&gt;pyre&lt;/h2&gt;&lt;p&gt;题目是一个pyc文件先反汇编一下，得到py文件。&lt;/p&gt;
+&lt;pre class=&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Reverse" scheme="http://higher-sky.github.io/categories/Reverse/"/>
+    
+    
+    <category term="逆向刷题" scheme="http://higher-sky.github.io/tags/%E9%80%86%E5%90%91%E5%88%B7%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>攻防世界(crypto)</title>
@@ -44,8 +70,16 @@
     <link href="http://higher-sky.github.io/2021/0602undefined.html"/>
     <id>http://higher-sky.github.io/2021/0602undefined.html</id>
     <published>2021-06-02T13:27:31.000Z</published>
-    <updated>2021-06-02T13:29:48.120Z</updated>
+    <updated>2021-06-15T13:22:05.298Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;##[湖南科技学院2021]lsb&lt;br&gt;把题目文件下载下来，直接拖入Stegsolve&lt;br&gt;&lt;img src=&quot;/images/image-23.png&quot; alt=&quot;Image text&quot;&gt;&lt;br&gt;然后用010editor查看的到flag&lt;br&gt;&lt;img</summary>
+        
+      
     
     
     
@@ -153,7 +187,7 @@
     <link href="http://higher-sky.github.io/2021/0527undefined.html"/>
     <id>http://higher-sky.github.io/2021/0527undefined.html</id>
     <published>2021-05-26T16:02:53.000Z</published>
-    <updated>2021-06-02T13:19:47.771Z</updated>
+    <updated>2021-06-15T13:12:48.008Z</updated>
     
     
       
