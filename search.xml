@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>buu</title>
+      <link href="2021/0715undefined.html"/>
+      <url>2021/0715undefined.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="2021-7-buu-刷题"><a href="#2021-7-buu-刷题" class="headerlink" title="[2021.7]buu 刷题"></a>[2021.7]buu 刷题</h1><h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><p><strong>[GUET-CTF2019]NO SOS</strong></p><p>题目</p><p>..-.-.-.–…….–..-…-..-…–.-.-….-..-..–.-.-..-.-..—-</p><p>看着是摩斯密码但是一用在解密，解密不出来，后面发现题目中.和-不是完全正确的被人改过</p><p>所以我们应该先还原：..-.-.-.–…….–..-…-..-…–.-.-….-..-..–.-.-..-.-..—-，再通过<a href="https://ctftools.com/down/">在线解密网站</a></p><p>得到aababababbaaaaaaabbaabaaabaabaaabbababaaaabaabaabbababaababaabbbb</p><p>发现这个是培根密码再用另外一个<a href="http://ctf.ssleye.com/baconian.html">在线解密网站</a></p><p>得到flag</p><pre><code>flagisguetkkp</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 2021.7刷题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> buu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>协会平台题目</title>
       <link href="2021/0615undefined.html"/>
       <url>2021/0615undefined.html</url>
