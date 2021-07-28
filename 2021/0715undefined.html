@@ -492,6 +492,11 @@
         
 
         
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
+        
 
         <div class="card-content article-card-content">
             <div id="articleContent">
@@ -743,7 +748,125 @@ flag<span class="token operator">=</span><span class="token string">""</span>
     <span class="token keyword">print</span> flag
 <span class="token comment" spellcheck="true">#XMAN{CRYPT0_I5_50_Interestingvim rsa.py}</span>
 </code></pre>
-<p>得到flag这道题目不简单，运用古典加密中的凯撒加密，现代加密中的rsa,真的是满满的干货。</p>
+<p>得到flag这道题目不简单，运用古典加密中的凯撒加密，现代加密中的rsa,真的是满满的干货。<br><strong>[NPUCTF2020]认清形势，建立信心</strong><br>题目</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
+
+p <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span>
+e <span class="token operator">=</span> <span class="token comment" spellcheck="true"># Hidden</span>
+q <span class="token operator">=</span> getPrime<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span>
+n <span class="token operator">=</span> p <span class="token operator">*</span> q
+m <span class="token operator">=</span> bytes_to_long<span class="token punctuation">(</span>flag<span class="token punctuation">.</span>strip<span class="token punctuation">(</span>b<span class="token string">"npuctf{"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span>b<span class="token string">"}"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+c <span class="token operator">=</span> pow<span class="token punctuation">(</span>m<span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pow<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pow<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pow<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> e<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token triple-quoted-string string">'''
+169169912654178
+128509160179202
+518818742414340
+358553002064450
+'''</span>
+</code></pre>
+<p>这是rsa里面中建立方程来求解的题型。<br>c = 169169912654178<br>X = 2^e mod n = 128509160179202<br>Y = 4^e mod n = 518818742414340<br>Z = 8^e mod n = 358553002064450<br>根据上面的三个式子我们可以得到n和e，又因为n = p*q<br>所以解密脚本如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> gmpy2
+<span class="token keyword">import</span> sympy
+
+c <span class="token operator">=</span> <span class="token number">169169912654178</span>
+x <span class="token operator">=</span> <span class="token number">128509160179202</span>
+y <span class="token operator">=</span> <span class="token number">518818742414340</span>
+z <span class="token operator">=</span> <span class="token number">358553002064450</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>gmpy2<span class="token punctuation">.</span>gcd<span class="token punctuation">(</span>x<span class="token operator">**</span><span class="token number">2</span><span class="token operator">-</span>y<span class="token punctuation">,</span>x<span class="token operator">*</span>y<span class="token operator">-</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+n<span class="token operator">=</span><span class="token number">1054494004042394</span><span class="token operator">//</span><span class="token number">2</span>
+p<span class="token operator">=</span> <span class="token number">18195301</span>
+q<span class="token operator">=</span> <span class="token number">28977097</span>
+e<span class="token operator">=</span>sympy<span class="token punctuation">.</span>discrete_log<span class="token punctuation">(</span>n<span class="token punctuation">,</span>x<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>
+d<span class="token operator">=</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#flag{b'345y!}</span>
+</code></pre>
+<p><strong>[BJDCTF2020]伏羲六十四卦</strong><br>题目<br>ciphertext.txt:</p>
+<pre><code>这是什么，怎么看起来像是再算64卦！！！
+
+密文:升随临损巽睽颐萃小过讼艮颐小过震蛊屯未济中孚艮困恒晋升损蛊萃蛊未济巽解艮贲未济观豫损蛊晋噬嗑晋旅解大畜困未济随蒙升解睽未济井困未济旅萃未济震蒙未济师涣归妹大有
+
+嗯？为什么还有个b呢?
+b=7
+
+
+flag：请按照格式BJD{}
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#我有没有用呢？</span>
+<span class="token comment" spellcheck="true"># -- coding:UTF-8 --</span>
+<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
+
+<span class="token keyword">def</span> <span class="token function">encrpyt5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    enc<span class="token operator">=</span><span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> flag<span class="token punctuation">:</span>
+        enc<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">97</span><span class="token punctuation">)</span><span class="token operator">+</span>b<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">26</span><span class="token operator">+</span><span class="token number">97</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>enc<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">encrypt4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp<span class="token operator">=</span><span class="token string">''</span>
+    offset<span class="token operator">=</span><span class="token number">5</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>enc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        temp<span class="token operator">+=</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>enc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span>offset<span class="token operator">-</span>i<span class="token punctuation">)</span>
+    <span class="token keyword">return</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span>
+</code></pre>
+<p>通过百度查询伏羲六十四卦的卦象代表的数字用二进制表示如下所示：<br>dic={‘坤’: ‘000000’, ‘剥’: ‘000001’, ‘比’: ‘000010’, ‘观’: ‘000011’, ‘豫’: ‘000100’, ‘晋’: ‘000101’, ‘萃’: ‘000110’, ‘否’: ‘000111’, ‘谦’: ‘001000’, ‘艮’: ‘001001’, ‘蹇’: ‘001010’, ‘渐’: ‘001011’, ‘小过’: ‘001100’, ‘旅’: ‘001101’, ‘咸’: ‘001110’, ‘遁’: ‘001111’, ‘师’: ‘010000’, ‘蒙’: ‘010001’, ‘坎’: ‘010010’, ‘涣’: ‘010011’, ‘解’: ‘010100’, ‘未济’: ‘010101’, ‘困’: ‘010110’, ‘讼’: ‘010111’, ‘升’: ‘011000’, ‘蛊’: ‘011001’, ‘井’: ‘011010’, ‘巽’: ‘011011’, ‘恒’: ‘011100’, ‘鼎’: ‘011101’, ‘大过’: ‘011110’, ‘姤’: ‘011111’, ‘复’: ‘100000’, ‘颐’: ‘100001’, ‘屯’: ‘100010’, ‘益’: ‘100011’, ‘震’: ‘100100’, ‘噬嗑’: ‘100101’, ‘随’: ‘100110’, ‘无妄’: ‘100111’, ‘明夷’: ‘101000’, ‘贲’: ‘101001’, ‘既济’: ‘101010’, ‘家人’: ‘101011’, ‘丰’: ‘101100’, ‘离’: ‘101101’, ‘革’: ‘101110’, ‘同人’: ‘101111’, ‘临’: ‘110000’, ‘损’: ‘110001’, ‘节’: ‘110010’, ‘中孚’: ‘110011’, ‘归妹’: ‘110100’, ‘睽’: ‘110101’, ‘兑’: ‘110110’, ‘履’: ‘110111’, ‘泰’: ‘111000’, ‘大畜’: ‘111001’, ‘需’: ‘111010’, ‘小畜’: ‘111011’, ‘大壮’: ‘111100’, ‘大有’: ‘111101’, ‘夬’: ‘111110’, ‘乾’: ‘111111’}<br>所以解题脚如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">decrypt4</span><span class="token punctuation">(</span>enc<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp <span class="token operator">=</span> <span class="token string">''</span>
+    offset <span class="token operator">=</span> <span class="token number">5</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>enc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        temp<span class="token operator">+=</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>enc<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">+</span>offset<span class="token operator">+</span>i<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> temp
+
+<span class="token keyword">def</span> <span class="token function">decrypt5</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> a <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        enc <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> flag<span class="token punctuation">:</span>
+            <span class="token keyword">for</span> k <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">97</span><span class="token operator">-</span><span class="token number">7</span><span class="token operator">+</span><span class="token number">26</span><span class="token operator">*</span>k<span class="token punctuation">)</span><span class="token operator">%</span>a<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
+                    enc<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">97</span><span class="token operator">-</span><span class="token number">7</span><span class="token operator">+</span><span class="token number">26</span><span class="token operator">*</span>k<span class="token punctuation">)</span><span class="token operator">//</span>a<span class="token operator">+</span><span class="token number">97</span><span class="token punctuation">)</span>
+                    <span class="token keyword">break</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span>enc<span class="token punctuation">)</span>
+
+s<span class="token operator">=</span><span class="token string">'升随临损巽睽颐萃小过讼艮颐小过震蛊屯未济中孚艮困恒晋升损蛊萃蛊未济巽解艮贲未济观豫损蛊晋噬嗑晋旅解大畜困未济随蒙升解睽未济井困未济旅萃未济震蒙未济师涣归妹大有'</span>
+dic<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">'坤'</span><span class="token punctuation">:</span> <span class="token string">'000000'</span><span class="token punctuation">,</span> <span class="token string">'剥'</span><span class="token punctuation">:</span> <span class="token string">'000001'</span><span class="token punctuation">,</span> <span class="token string">'比'</span><span class="token punctuation">:</span> <span class="token string">'000010'</span><span class="token punctuation">,</span> <span class="token string">'观'</span><span class="token punctuation">:</span> <span class="token string">'000011'</span><span class="token punctuation">,</span> <span class="token string">'豫'</span><span class="token punctuation">:</span> <span class="token string">'000100'</span><span class="token punctuation">,</span> <span class="token string">'晋'</span><span class="token punctuation">:</span> <span class="token string">'000101'</span><span class="token punctuation">,</span> <span class="token string">'萃'</span><span class="token punctuation">:</span> <span class="token string">'000110'</span><span class="token punctuation">,</span> <span class="token string">'否'</span><span class="token punctuation">:</span> <span class="token string">'000111'</span><span class="token punctuation">,</span> <span class="token string">'谦'</span><span class="token punctuation">:</span> <span class="token string">'001000'</span><span class="token punctuation">,</span> <span class="token string">'艮'</span><span class="token punctuation">:</span> <span class="token string">'001001'</span><span class="token punctuation">,</span> <span class="token string">'蹇'</span><span class="token punctuation">:</span> <span class="token string">'001010'</span><span class="token punctuation">,</span> <span class="token string">'渐'</span><span class="token punctuation">:</span> <span class="token string">'001011'</span><span class="token punctuation">,</span> <span class="token string">'小过'</span><span class="token punctuation">:</span> <span class="token string">'001100'</span><span class="token punctuation">,</span> <span class="token string">'旅'</span><span class="token punctuation">:</span> <span class="token string">'001101'</span><span class="token punctuation">,</span> <span class="token string">'咸'</span><span class="token punctuation">:</span> <span class="token string">'001110'</span><span class="token punctuation">,</span> <span class="token string">'遁'</span><span class="token punctuation">:</span> <span class="token string">'001111'</span><span class="token punctuation">,</span> <span class="token string">'师'</span><span class="token punctuation">:</span> <span class="token string">'010000'</span><span class="token punctuation">,</span> <span class="token string">'蒙'</span><span class="token punctuation">:</span> <span class="token string">'010001'</span><span class="token punctuation">,</span> <span class="token string">'坎'</span><span class="token punctuation">:</span> <span class="token string">'010010'</span><span class="token punctuation">,</span> <span class="token string">'涣'</span><span class="token punctuation">:</span> <span class="token string">'010011'</span><span class="token punctuation">,</span> <span class="token string">'解'</span><span class="token punctuation">:</span> <span class="token string">'010100'</span><span class="token punctuation">,</span> <span class="token string">'未济'</span><span class="token punctuation">:</span> <span class="token string">'010101'</span><span class="token punctuation">,</span> <span class="token string">'困'</span><span class="token punctuation">:</span> <span class="token string">'010110'</span><span class="token punctuation">,</span> <span class="token string">'讼'</span><span class="token punctuation">:</span> <span class="token string">'010111'</span><span class="token punctuation">,</span> <span class="token string">'升'</span><span class="token punctuation">:</span> <span class="token string">'011000'</span><span class="token punctuation">,</span> <span class="token string">'蛊'</span><span class="token punctuation">:</span> <span class="token string">'011001'</span><span class="token punctuation">,</span> <span class="token string">'井'</span><span class="token punctuation">:</span> <span class="token string">'011010'</span><span class="token punctuation">,</span> <span class="token string">'巽'</span><span class="token punctuation">:</span> <span class="token string">'011011'</span><span class="token punctuation">,</span> <span class="token string">'恒'</span><span class="token punctuation">:</span> <span class="token string">'011100'</span><span class="token punctuation">,</span> <span class="token string">'鼎'</span><span class="token punctuation">:</span> <span class="token string">'011101'</span><span class="token punctuation">,</span> <span class="token string">'大过'</span><span class="token punctuation">:</span> <span class="token string">'011110'</span><span class="token punctuation">,</span> <span class="token string">'姤'</span><span class="token punctuation">:</span> <span class="token string">'011111'</span><span class="token punctuation">,</span> <span class="token string">'复'</span><span class="token punctuation">:</span> <span class="token string">'100000'</span><span class="token punctuation">,</span> <span class="token string">'颐'</span><span class="token punctuation">:</span> <span class="token string">'100001'</span><span class="token punctuation">,</span> <span class="token string">'屯'</span><span class="token punctuation">:</span> <span class="token string">'100010'</span><span class="token punctuation">,</span> <span class="token string">'益'</span><span class="token punctuation">:</span> <span class="token string">'100011'</span><span class="token punctuation">,</span> <span class="token string">'震'</span><span class="token punctuation">:</span> <span class="token string">'100100'</span><span class="token punctuation">,</span> <span class="token string">'噬嗑'</span><span class="token punctuation">:</span> <span class="token string">'100101'</span><span class="token punctuation">,</span> <span class="token string">'随'</span><span class="token punctuation">:</span> <span class="token string">'100110'</span><span class="token punctuation">,</span> <span class="token string">'无妄'</span><span class="token punctuation">:</span> <span class="token string">'100111'</span><span class="token punctuation">,</span> <span class="token string">'明夷'</span><span class="token punctuation">:</span> <span class="token string">'101000'</span><span class="token punctuation">,</span> <span class="token string">'贲'</span><span class="token punctuation">:</span> <span class="token string">'101001'</span><span class="token punctuation">,</span> <span class="token string">'既济'</span><span class="token punctuation">:</span> <span class="token string">'101010'</span><span class="token punctuation">,</span> <span class="token string">'家人'</span><span class="token punctuation">:</span> <span class="token string">'101011'</span><span class="token punctuation">,</span> <span class="token string">'丰'</span><span class="token punctuation">:</span> <span class="token string">'101100'</span><span class="token punctuation">,</span> <span class="token string">'离'</span><span class="token punctuation">:</span> <span class="token string">'101101'</span><span class="token punctuation">,</span> <span class="token string">'革'</span><span class="token punctuation">:</span> <span class="token string">'101110'</span><span class="token punctuation">,</span> <span class="token string">'同人'</span><span class="token punctuation">:</span> <span class="token string">'101111'</span><span class="token punctuation">,</span> <span class="token string">'临'</span><span class="token punctuation">:</span> <span class="token string">'110000'</span><span class="token punctuation">,</span> <span class="token string">'损'</span><span class="token punctuation">:</span> <span class="token string">'110001'</span><span class="token punctuation">,</span> <span class="token string">'节'</span><span class="token punctuation">:</span> <span class="token string">'110010'</span><span class="token punctuation">,</span> <span class="token string">'中孚'</span><span class="token punctuation">:</span> <span class="token string">'110011'</span><span class="token punctuation">,</span> <span class="token string">'归妹'</span><span class="token punctuation">:</span> <span class="token string">'110100'</span><span class="token punctuation">,</span> <span class="token string">'睽'</span><span class="token punctuation">:</span> <span class="token string">'110101'</span><span class="token punctuation">,</span> <span class="token string">'兑'</span><span class="token punctuation">:</span> <span class="token string">'110110'</span><span class="token punctuation">,</span> <span class="token string">'履'</span><span class="token punctuation">:</span> <span class="token string">'110111'</span><span class="token punctuation">,</span> <span class="token string">'泰'</span><span class="token punctuation">:</span> <span class="token string">'111000'</span><span class="token punctuation">,</span> <span class="token string">'大畜'</span><span class="token punctuation">:</span> <span class="token string">'111001'</span><span class="token punctuation">,</span> <span class="token string">'需'</span><span class="token punctuation">:</span> <span class="token string">'111010'</span><span class="token punctuation">,</span> <span class="token string">'小畜'</span><span class="token punctuation">:</span> <span class="token string">'111011'</span><span class="token punctuation">,</span> <span class="token string">'大壮'</span><span class="token punctuation">:</span> <span class="token string">'111100'</span><span class="token punctuation">,</span> <span class="token string">'大有'</span><span class="token punctuation">:</span> <span class="token string">'111101'</span><span class="token punctuation">,</span> <span class="token string">'夬'</span><span class="token punctuation">:</span> <span class="token string">'111110'</span><span class="token punctuation">,</span> <span class="token string">'乾'</span><span class="token punctuation">:</span> <span class="token string">'111111'</span><span class="token punctuation">}</span>
+li<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+k<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> k <span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">:</span>
+        k<span class="token operator">=</span><span class="token number">0</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        li<span class="token punctuation">.</span>append<span class="token punctuation">(</span>dic<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        t<span class="token operator">=</span><span class="token string">''</span>
+        t<span class="token operator">=</span>t<span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+        li<span class="token punctuation">.</span>append<span class="token punctuation">(</span>dic<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        k<span class="token operator">=</span><span class="token number">1</span>
+ss<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>li<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span>
+enc<span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    enc<span class="token operator">+=</span>chr<span class="token punctuation">(</span>eval<span class="token punctuation">(</span><span class="token string">'0b'</span><span class="token operator">+</span>ss<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i<span class="token operator">+</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">import</span> base64
+<span class="token keyword">print</span><span class="token punctuation">(</span>enc<span class="token punctuation">)</span>
+x<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>enc<span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+x<span class="token operator">=</span>decrypt4<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+x<span class="token operator">=</span>decrypt5<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#flag{bjdcongratulationsongettingtheflag}</span>
+</code></pre>
 
                 
             </div>
@@ -1084,6 +1207,43 @@ flag<span class="token operator">=</span><span class="token string">""</span>
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: sky<br />'
+            + '文章作者: 浅酌<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
