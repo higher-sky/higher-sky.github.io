@@ -525,8 +525,7 @@ q <span class="token operator">=</span> <span class="token number">4511491</span
 e <span class="token operator">=</span> <span class="token number">17</span>
 phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
 d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
-m <span class="token operator">=</span> pow<span class="token punctuation">(</span>e<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
-flag<span class="token operator">=</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
 </code></pre>
 <h2 id="12、丢失的MD5"><a href="#12、丢失的MD5" class="headerlink" title="12、丢失的MD5"></a>12、丢失的MD5</h2><p>题目<br><img src="/images/image-47.png" alt="Image text"><br>用python IDLE打开得到<br><img src="/images/image-48.png" alt="Image text"><br>直接改下脚本运行一下就出来了</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> hashlib
