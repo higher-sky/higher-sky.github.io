@@ -542,6 +542,28 @@ d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</
 </code></pre>
 <p>flag{e9032994dabac08080091151380478a2}</p>
 <h2 id="13、Alice与Bob"><a href="#13、Alice与Bob" class="headerlink" title="13、Alice与Bob"></a>13、Alice与Bob</h2><p>题目<br>密码学历史中，有两位知名的杰出人物，Alice和Bob。他们的爱情经过置换和轮加密也难以混淆，即使是没有身份认证也可以知根知底。就像在数学王国中的素数一样，孤傲又热情。下面是一个大整数:98554799767,请分解为两个素数，分解后，小的放前面，大的放后面，合成一个新的数字，进行md5的32位小写哈希，提交答案。 注意：得到的 flag 请包上 flag{} 提交<br>解答过程<br>1、<a target="_blank" rel="noopener" href="http://www.factordb.com/index.php">在线分解素数</a><br><img src="/images/image-49.png" alt="Image text"><br>2、<a target="_blank" rel="noopener" href="https://www.cmd5.com/">md5在线解密</a><br><img src="/images/image-50.png" alt="Image text"><br>flag{ d450209323a847c8d01c6be47c81811a}</p>
+<h2 id="14、rsarsa"><a href="#14、rsarsa" class="headerlink" title="14、rsarsa"></a>14、rsarsa</h2><p>Math is cool! Use the RSA algorithm to decode the secret message, c, p, q, and e are parameters for the RSA algorithm.</p>
+<p>p =  9648423029010515676590551740010426534945737639235739800643989352039852507298491399561035009163427050370107570733633350911691280297777160200625281665378483<br>q =  11874843837980297032092405848653656852760910154543380907650040190704283358909208578251063047732443992230647903887510065547947313543299303261986053486569407<br>e =  65537<br>c =  83208298995174604174773590298203639360540024871256126892889661345742403314929861939100492666605647316646576486526217457006376842280869728581726746401583705899941768214138742259689334840735633553053887641847651173776251820293087212885670180367406807406765923638973161375817392737747832762751690104423869019034</p>
+<p>Use RSA to find the secret message<br>解题脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> gmpy2
+p <span class="token operator">=</span>  <span class="token number">9648423029010515676590551740010426534945737639235739800643989352039852507298491399561035009163427050370107570733633350911691280297777160200625281665378483</span>
+q <span class="token operator">=</span>  <span class="token number">11874843837980297032092405848653656852760910154543380907650040190704283358909208578251063047732443992230647903887510065547947313543299303261986053486569407</span>
+e <span class="token operator">=</span>  <span class="token number">65537</span>
+c <span class="token operator">=</span>  <span class="token number">83208298995174604174773590298203639360540024871256126892889661345742403314929861939100492666605647316646576486526217457006376842280869728581726746401583705899941768214138742259689334840735633553053887641847651173776251820293087212885670180367406807406765923638973161375817392737747832762751690104423869019034</span>
+
+n <span class="token operator">=</span> p<span class="token operator">*</span>q
+
+phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+
+d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+</code></pre>
+<p>flag{5577446633554466577768879988}</p>
+<h2 id="15、大帝的密码武器"><a href="#15、大帝的密码武器" class="headerlink" title="15、大帝的密码武器"></a>15、大帝的密码武器</h2><p>下载文件是一个没有文件后缀的文件，我们手动添加一个文件后缀zip。<br>密文：ComeChina<br>题目：<br>公元前一百年，在罗马出生了一位对世界影响巨大的人物，他生前是罗马三巨头之一。他率先使用了一种简单的加密函，因此这种加密方法以他的名字命名。<br>以下密文被解开后可以获得一个有意义的单词：FRPHEVGL<br>你可以用这个相同的加密向量加密附件中的密文，作为答案进行提交。<br>1、猜测是凯撒密码，先将题目中的密文进行解密<a target="_blank" rel="noopener" href="https://tool.bugku.com/jiemi/">凯撒在线解密</a><br><img src="/images/image-51.png" alt="Image text"><br>发现题目中的密文通过密钥是13的凯撒加密得到了SECURITY。<br>所以密文ComeChina也通过密钥是13的凯撒加密得到PbzrPuvan<br>所以flag{PbzrPuvan}</p>
 
                 
             </div>
