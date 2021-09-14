@@ -36,8 +36,8 @@
 
 <meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="sky" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="sky" type="application/atom+xml">
+</head>
 
 
 
@@ -679,6 +679,40 @@ flag <span class="token operator">=</span> long_to_bytes<span class="token punct
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
 </code></pre>
+<h2 id="27、异性相吸"><a href="#27、异性相吸" class="headerlink" title="27、异性相吸"></a>27、异性相吸</h2><p>题目<br>key.txt:<br>asadsasdasdasdasdasdasdasdasdasdqwesqf<br>密文。txt：<br>ἇ̀Ј唒ဃ塔屋䩘卖剄䐃堂ن䝔嘅均ቄ䩝ᬔ</p>
+<p>解答过程<br>1、打开文件发现两串毫无联系的密文<br>2、通过题目名称怀疑是异或，所以用010editor打开两个文件发现两个长度是一样的<br><img src="/images/image-67.png" alt="Image text"><br><img src="/images/image-68.png" alt="Image text"><br>直接写解题脚本</p>
+<pre class=" language-python"><code class="language-python">key <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"D:/bandzip 解压/b8c1caee-43d6-42ee-aecc-d72502a5ade2/key.txt"</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+cipher <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"D:/bandzip 解压/b8c1caee-43d6-42ee-aecc-d72502a5ade2/密文.txt"</span><span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+flag <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+result <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag<span class="token punctuation">.</span>append<span class="token punctuation">(</span>key<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> cipher<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    result <span class="token operator">+=</span> chr<span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+</code></pre>
+<p>flag{ea1bc0988992276b7f95b54a7435e89e}</p>
+<h2 id="28、还原大师"><a href="#28、还原大师" class="headerlink" title="28、还原大师"></a>28、还原大师</h2><p>题目<br>我们得到了一串神秘字符串：TASC?O3RJMV?WDJKX?ZM,问号部分是未知大写字母，为了确定这个神秘字符串，我们通过了其他途径获得了这个字串的32位MD5码。但是我们获得它的32位MD5码也是残缺不全，E903???4DAB????08?????51?80??8A?,请猜出神秘字符串的原本模样，并且提交这个字串的32位MD5码作为答案<br>解题过程<br>只能用python写脚本爆破了</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> hashlib
+
+<span class="token comment" spellcheck="true">#print hashlib.md5(s).hexdigest().upper()</span>
+k <span class="token operator">=</span> <span class="token string">'TASC?O3RJMV?WDJKX?ZM'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp1 <span class="token operator">=</span> k<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'?'</span><span class="token punctuation">,</span>str<span class="token punctuation">(</span>chr<span class="token punctuation">(</span><span class="token number">65</span><span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        temp2 <span class="token operator">=</span> temp1<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'?'</span><span class="token punctuation">,</span>chr<span class="token punctuation">(</span><span class="token number">65</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> n <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            temp3 <span class="token operator">=</span> temp2<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'?'</span><span class="token punctuation">,</span>chr<span class="token punctuation">(</span><span class="token number">65</span><span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
+            s <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span>temp3<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'E903'</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span> <span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># flag{E9032994DABAC08080091151380478A2}</span>
+</code></pre>
+<h2 id="29、Unencode"><a href="#29、Unencode" class="headerlink" title="29、Unencode"></a>29、Unencode</h2><p>题目<br>89FQA9WMD&lt;V1A&lt;V1S83DY.#&lt;W3$Q,2TM]<br>通过题目可以看出这是一种加密方式直接<a target="_blank" rel="noopener" href="http://ctf.ssleye.com/uu.html">在线解密</a><br><img src="/images/image-69.png" alt="Image text"></p>
+<p>flag{dsdasdsa99877LLLKK}</p>
+<h2 id="30、RSA"><a href="#30、RSA" class="headerlink" title="30、RSA"></a>30、RSA</h2><p>题目</p>
 
                 
             </div>
