@@ -34,9 +34,9 @@
     <script src="/live2d-widget/autoload.js"></script>
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="sky" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="sky" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -596,6 +596,89 @@ flag <span class="token operator">=</span> long_to_bytes<span class="token punct
 <span class="token comment" spellcheck="true">##noxCTF{W31c0m3_70_Ch1n470wn}</span>
 </code></pre>
 <h2 id="21、萌萌哒的八戒"><a href="#21、萌萌哒的八戒" class="headerlink" title="21、萌萌哒的八戒"></a>21、萌萌哒的八戒</h2><p>题目<br><img src="/images/image-60.jpg" alt="Image text"><br>解题过程<br>1、这是一个猪圈密码直接<a target="_blank" rel="noopener" href="http://www.metools.info/code/c90.html">在线解密</a><br><img src="/images/image-60.png" alt="Image text"><br>flag{whenthepigwanttoeat}</p>
+<h2 id="22、old-fashion"><a href="#22、old-fashion" class="headerlink" title="22、old-fashion"></a>22、old-fashion</h2><p>题目<br>Os drnuzearyuwn, y jtkjzoztzoes douwlr oj y ilzwex eq lsdexosa kn pwodw tsozj eq ufyoszlbz yrl rlufydlx pozw douwlrzlbz, ydderxosa ze y rlatfyr jnjzli; mjy gfbmw vla xy wbfnsy symmyew (mjy vrwm qrvvrf), hlbew rd symmyew, mebhsymw rd symmyew, vbomgeyw rd mjy lxrzy, lfk wr dremj. Mjy eyqybzye kyqbhjyew mjy myom xa hyedrevbfn lf bfzyewy wgxwmbmgmbrf. Wr mjy dsln bw f1_2jyf-k3_jg1-vb-vl_l<br>解题过程<br>1、刚开始尝试用凯撒密码解密，发现解密不出来应该是文本太大了<a target="_blank" rel="noopener" href="https://tool.bugku.com/jiemi/"></a><br><img src="/images/image-61.png" alt="Image text"><br>2、后面还是选择词频分析<a target="_blank" rel="noopener" href="https://quipqiup.com/">在线爆破</a><br><img src="/images/image-62.png" alt="Image text"></p>
+<h2 id="23、权限获得第一步"><a href="#23、权限获得第一步" class="headerlink" title="23、权限获得第一步"></a>23、权限获得第一步</h2><p>题目<br>Administrator:500:806EDC27AA52E314AAD3B435B51404EE:F4AD50F57683D4260DFD48AA351A17A8:::</p>
+<p>直接用MD5<a target="_blank" rel="noopener" href="https://www.cmd5.com/">在线解密</a>就得到flag<br><img src="/images/image-63.png" alt="Image text"><br>flag{3617656}</p>
+<h2 id="24、世上无难事"><a href="#24、世上无难事" class="headerlink" title="24、世上无难事"></a>24、世上无难事</h2><p>题目<br>VIZZB IFIUOJBWO NVXAP OBC XZZ UKHVN IFIUOJBWO HB XVIXW XAW VXFI X QIXN VBD KQ IFIUOJBWO WBKAH NBWXO VBD XJBCN NKG QLKEIU DI XUI VIUI DKNV QNCWIANQ XN DXPIMKIZW VKHV QEVBBZ KA XUZKAHNBA FKUHKAKX XAW DI VXFI HBN QNCWIANQ NCAKAH KA MUBG XZZ XEUBQQ XGIUKEX MUBG PKAWIUHXUNIA NVUBCHV 12NV HUXWI XAW DI XUI SCQN QB HZXW NVXN XZZ EBCZW SBKA CQ NBWXO XAW DI DXAN NB NVXAP DXPIMKIZW MBU JIKAH QCEV XA BCNQNXAWKAH VBQN HKFI OBCUQIZFIQ X JKH UBCAW BM XLLZXCQI XAW NVI PIO KQ 640I11012805M211J0XJ24MM02X1IW09</p>
+<p>解题分析<br>1、先用词频分析<a target="_blank" rel="noopener" href="https://quipqiup.com/">在线爆破</a><br><img src="/images/image-64.png" alt="Image text"><br>2、在把大写转小写<a target="_blank" rel="noopener" href="https://www.bejson.com/convert/uplowercase/">在线转化</a><br><img src="/images/image-65.png" alt="Image text"></p>
+<h2 id="25、RSA3"><a href="#25、RSA3" class="headerlink" title="25、RSA3"></a>25、RSA3</h2><p>题目</p>
+<pre><code>c1=22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361
+n=22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801
+e1=11187289
+c2=18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397
+e2=9647291
+</code></pre>
+<p>解答过程<br><strong>知识点</strong>（欠缺）<br>1、这RSA加密类型中的共模攻击<br>扩展欧几里得</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">if</span> a <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token keyword">else</span><span class="token punctuation">:</span>
+    g<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x <span class="token operator">=</span> exgcd<span class="token punctuation">(</span>b <span class="token operator">%</span> a<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>g<span class="token punctuation">,</span> x <span class="token operator">-</span> <span class="token punctuation">(</span>b <span class="token operator">//</span> a<span class="token punctuation">)</span> <span class="token operator">*</span> y<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+</code></pre>
+<p>解密脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> gmpy2
+c1<span class="token operator">=</span><span class="token number">22322035275663237041646893770451933509324701913484303338076210603542612758956262869640822486470121149424485571361007421293675516338822195280313794991136048140918842471219840263536338886250492682739436410013436651161720725855484866690084788721349555662019879081501113222996123305533009325964377798892703161521852805956811219563883312896330156298621674684353919547558127920925706842808914762199011054955816534977675267395009575347820387073483928425066536361482774892370969520740304287456555508933372782327506569010772537497541764311429052216291198932092617792645253901478910801592878203564861118912045464959832566051361</span>
+n<span class="token operator">=</span><span class="token number">22708078815885011462462049064339185898712439277226831073457888403129378547350292420267016551819052430779004755846649044001024141485283286483130702616057274698473611149508798869706347501931583117632710700787228016480127677393649929530416598686027354216422565934459015161927613607902831542857977859612596282353679327773303727004407262197231586324599181983572622404590354084541788062262164510140605868122410388090174420147752408554129789760902300898046273909007852818474030770699647647363015102118956737673941354217692696044969695308506436573142565573487583507037356944848039864382339216266670673567488871508925311154801</span>
+e1<span class="token operator">=</span><span class="token number">11187289</span>
+c2<span class="token operator">=</span><span class="token number">18702010045187015556548691642394982835669262147230212731309938675226458555210425972429418449273410535387985931036711854265623905066805665751803269106880746769003478900791099590239513925449748814075904017471585572848473556490565450062664706449128415834787961947266259789785962922238701134079720414228414066193071495304612341052987455615930023536823801499269773357186087452747500840640419365011554421183037505653461286732740983702740822671148045619497667184586123657285604061875653909567822328914065337797733444640351518775487649819978262363617265797982843179630888729407238496650987720428708217115257989007867331698397</span>
+e2<span class="token operator">=</span><span class="token number">9647291</span>
+
+<span class="token keyword">def</span> <span class="token function">exgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">if</span> a <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token keyword">else</span><span class="token punctuation">:</span>
+    g<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x <span class="token operator">=</span> exgcd<span class="token punctuation">(</span>b <span class="token operator">%</span> a<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>g<span class="token punctuation">,</span> x <span class="token operator">-</span> <span class="token punctuation">(</span>b <span class="token operator">//</span> a<span class="token punctuation">)</span> <span class="token operator">*</span> y<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+s <span class="token operator">=</span> exgcd<span class="token punctuation">(</span>e1<span class="token punctuation">,</span>e2<span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c1<span class="token punctuation">,</span>s<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token operator">*</span>pow<span class="token punctuation">(</span>c2<span class="token punctuation">,</span>s<span class="token punctuation">,</span>n<span class="token punctuation">)</span> <span class="token operator">%</span>n
+
+flag <span class="token operator">=</span> long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># flag{49d91077a1abcb14f1a9d546c80be9ef}</span>
+</code></pre>
+<h2 id="26、RSA2"><a href="#26、RSA2" class="headerlink" title="26、RSA2"></a>26、RSA2</h2><p>题目</p>
+<pre><code>e = 65537
+n = 248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113
+dp = 905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657
+
+c = 140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751
+</code></pre>
+<p>解题过程<br>1、这是RSA中的dp泄露的攻击类型<br>dp = d%(p-1)<br><img src="/images/image-66.png" alt="Image text"></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">65538</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dp<span class="token operator">*</span>e<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">%</span>i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> n<span class="token operator">%</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp<span class="token operator">*</span>e<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
+            p<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp<span class="token operator">*</span>e<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span>
+            q<span class="token operator">=</span>n<span class="token operator">/</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp<span class="token operator">*</span>e<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">/</span>i<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+            phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+            d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span><span class="token operator">%</span>phi
+</code></pre>
+<p>2、根据上面的原理写脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> gmpy2
+e <span class="token operator">=</span> <span class="token number">65537</span>
+n <span class="token operator">=</span> <span class="token number">248254007851526241177721526698901802985832766176221609612258877371620580060433101538328030305219918697643619814200930679612109885533801335348445023751670478437073055544724280684733298051599167660303645183146161497485358633681492129668802402065797789905550489547645118787266601929429724133167768465309665906113</span>
+dp <span class="token operator">=</span> <span class="token number">905074498052346904643025132879518330691925174573054004621877253318682675055421970943552016695528560364834446303196939207056642927148093290374440210503657</span>
+
+c <span class="token operator">=</span> <span class="token number">140423670976252696807533673586209400575664282100684119784203527124521188996403826597436883766041879067494280957410201958935737360380801845453829293997433414188838725751796261702622028587211560353362847191060306578510511380965162133472698713063592621028959167072781482562673683090590521214218071160287665180751</span>
+
+<span class="token keyword">for</span> x <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>e<span class="token operator">*</span>dp<span class="token operator">%</span>x<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        p<span class="token operator">=</span><span class="token punctuation">(</span>e<span class="token operator">*</span>dp<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">//</span>x<span class="token operator">+</span><span class="token number">1</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span>p<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">continue</span>
+        q<span class="token operator">=</span>n<span class="token operator">//</span>p
+        phi <span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+        d<span class="token operator">=</span>gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
+        m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+flag <span class="token operator">=</span> long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+</code></pre>
 
                 
             </div>
