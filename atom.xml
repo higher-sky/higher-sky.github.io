@@ -6,7 +6,7 @@
   <link href="http://higher-sky.github.io/atom.xml" rel="self"/>
   
   <link href="http://higher-sky.github.io/"/>
-  <updated>2021-09-24T09:23:02.239Z</updated>
+  <updated>2021-09-24T09:27:52.848Z</updated>
   <id>http://higher-sky.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://higher-sky.github.io/2021/0923undefined.html"/>
     <id>http://higher-sky.github.io/2021/0923undefined.html</id>
     <published>2021-09-23T13:14:25.000Z</published>
-    <updated>2021-09-24T09:23:02.239Z</updated>
+    <updated>2021-09-24T09:27:52.848Z</updated>
     
     
       
@@ -33,6 +33,8 @@
       
     
     
+    
+    <category term="BugKu-Crypto" scheme="http://higher-sky.github.io/categories/BugKu-Crypto/"/>
     
     
     <category term="bugku" scheme="http://higher-sky.github.io/tags/bugku/"/>
