@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="协会平台题目, sky">
+    <meta name="keywords" content="古典密码, sky">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>协会平台题目 | sky</title>
+    <title>古典密码 | sky</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -328,12 +328,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">协会平台题目</h1>
+                    <h1 class="description center-align post-title">古典密码</h1>
                 </div>
             </div>
         </div>
@@ -449,8 +449,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%80%86%E5%90%91%E5%88%B7%E9%A2%98/">
-                                <span class="chip bg-color">逆向刷题</span>
+                            <a href="/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">
+                                <span class="chip bg-color">古典密码</span>
                             </a>
                         
                     </div>
@@ -461,8 +461,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Reverse/" class="post-category">
-                                Reverse
+                            <a href="/categories/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/" class="post-category">
+                                古典密码
                             </a>
                         
                     </div>
@@ -474,7 +474,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-15
+                    2021-06-01
                 </div>
                 
 
@@ -500,40 +500,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="pyre"><a href="#pyre" class="headerlink" title="pyre"></a>pyre</h2><p>题目是一个pyc文件先反汇编一下，得到py文件。</p>
-<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Embedded file name: pyre.py</span>
-<span class="token keyword">import</span> binascii
-key <span class="token operator">=</span> <span class="token number">35</span>
-flag <span class="token operator">=</span>raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>
-ans <span class="token operator">=</span> <span class="token string">''</span>
-<span class="token keyword">for</span> c <span class="token keyword">in</span> flag<span class="token punctuation">:</span>
-    ans <span class="token operator">+=</span> chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">)</span>
-
-<span class="token keyword">if</span> binascii<span class="token punctuation">.</span>b2a_hex<span class="token punctuation">(</span>ans<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242'</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'you are right!!'</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'incorrect!!'</span><span class="token punctuation">)</span>
-</code></pre>
-<p>由以上代码分析可得，flag是由键盘输入的，通过字符转16进制ord()函数再与key异或得到该’1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242’<br>所以解题脚本人如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> binascii
-<span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s<span class="token operator">=</span><span class="token string">''</span>
-    a <span class="token operator">=</span> bytearray<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> a<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> i
-        x <span class="token operator">=</span> x<span class="token operator">^</span><span class="token number">35</span>
-        s <span class="token operator">+=</span>chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> s
-
-
-b <span class="token operator">=</span> <span class="token string">'1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242'</span>
-flag<span class="token operator">=</span>decode<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#hosectf{91d6ad02-ef30-4953-9c21-5cf60169971a}</span>
-</code></pre>
-
+                
                 
             </div>
             <hr/>
@@ -559,7 +526,7 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://higher-sky.github.io/2021/0615undefined.html">http://higher-sky.github.io/2021/0615undefined.html</a>
+                    <a href="http://higher-sky.github.io/2021/0601undefined.html">http://higher-sky.github.io/2021/0601undefined.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -597,8 +564,8 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%80%86%E5%90%91%E5%88%B7%E9%A2%98/">
-                                    <span class="chip bg-color">逆向刷题</span>
+                                <a href="/tags/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">
+                                    <span class="chip bg-color">古典密码</span>
                                 </a>
                             
                         </div>
@@ -774,13 +741,13 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/0715undefined.html">
+                <a href="/2021/0602undefined.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="buu">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="RSA">
                         
-                        <span class="card-title">buu</span>
+                        <span class="card-title">RSA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -791,14 +758,14 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/2021-7%E5%88%B7%E9%A2%98/" class="post-category">
-                                    2021.7刷题
+                            <a href="/categories/RSA/" class="post-category">
+                                    RSA
                                 </a>
                             
                             
@@ -808,8 +775,8 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/buu/">
-                        <span class="chip bg-color">buu</span>
+                    <a href="/tags/RSA/">
+                        <span class="chip bg-color">RSA</span>
                     </a>
                     
                 </div>
@@ -823,13 +790,13 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/0603undefined.html">
+                <a href="/2021/0531undefined.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="攻防世界(crypto)">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="凛冬以至">
                         
-                        <span class="card-title">攻防世界(crypto)</span>
+                        <span class="card-title">凛冬以至</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -840,12 +807,16 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            浅酌
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%90%8C%E6%96%B0%E6%AF%94%E8%B5%9B%E9%A2%98%E7%9B%AE/" class="post-category">
+                                    萌新比赛题目
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -853,8 +824,8 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/crypto/">
-                        <span class="chip bg-color">crypto</span>
+                    <a href="/tags/%E5%87%9B%E5%86%AC%E4%BB%A5%E8%87%B3-crypto/">
+                        <span class="chip bg-color">凛冬以至(crypto)</span>
                     </a>
                     
                 </div>

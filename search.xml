@@ -93,8 +93,8 @@
     
     <entry>
       <title>协会平台题目</title>
-      <link href="2021/0615undefined.html"/>
-      <url>2021/0615undefined.html</url>
+      <link href="2021/0616undefined.html"/>
+      <url>2021/0616undefined.html</url>
       
         <content type="html"><![CDATA[<h2 id="pyre"><a href="#pyre" class="headerlink" title="pyre"></a>pyre</h2><p>题目是一个pyc文件先反汇编一下，得到py文件。</p><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Embedded file name: pyre.py</span><span class="token keyword">import</span> binasciikey <span class="token operator">=</span> <span class="token number">35</span>flag <span class="token operator">=</span>raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>ans <span class="token operator">=</span> <span class="token string">''</span><span class="token keyword">for</span> c <span class="token keyword">in</span> flag<span class="token punctuation">:</span>    ans <span class="token operator">+=</span> chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">)</span><span class="token keyword">if</span> binascii<span class="token punctuation">.</span>b2a_hex<span class="token punctuation">(</span>ans<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242'</span><span class="token punctuation">:</span>    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'you are right!!'</span><span class="token punctuation">)</span><span class="token keyword">else</span><span class="token punctuation">:</span>    <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">'incorrect!!'</span><span class="token punctuation">)</span></code></pre><p>由以上代码分析可得，flag是由键盘输入的，通过字符转16进制ord()函数再与key异或得到该’1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242’<br>所以解题脚本人如下：</p><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> binascii<span class="token keyword">def</span> <span class="token function">decode</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>    s<span class="token operator">=</span><span class="token string">''</span>    a <span class="token operator">=</span> bytearray<span class="token punctuation">.</span>fromhex<span class="token punctuation">(</span>m<span class="token punctuation">)</span>    <span class="token keyword">for</span> i <span class="token keyword">in</span> a<span class="token punctuation">:</span>        x <span class="token operator">=</span> i        x <span class="token operator">=</span> x<span class="token operator">^</span><span class="token number">35</span>        s <span class="token operator">+=</span>chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>    <span class="token keyword">return</span> sb <span class="token operator">=</span> <span class="token string">'1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242'</span>flag<span class="token operator">=</span>decode<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#hosectf{91d6ad02-ef30-4953-9c21-5cf60169971a}</span></code></pre>]]></content>
       
@@ -178,6 +178,31 @@
         <tags>
             
             <tag> RSA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>古典密码</title>
+      <link href="2021/0601undefined.html"/>
+      <url>2021/0601undefined.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 古典密码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 古典密码 </tag>
             
         </tags>
       
