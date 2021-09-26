@@ -576,6 +576,10 @@ bugku{11111 11001 00011 00111 01001 11011 10110 11111 10000 01110 11011 10110 11
 <p>得知bugku里面的密码是博多密码<a target="_blank" rel="noopener" href="https://www.boxentriq.com/code-breaking/baudot-code">在线解密</a><br><img src="/picture/image-9.png" alt="博多密码"><br>BAUD0TC0DE<br>bugku{baud0tc0de}</p>
 <h2 id="8、小山丘的秘密"><a href="#8、小山丘的秘密" class="headerlink" title="8、小山丘的秘密"></a>8、小山丘的秘密</h2><p>题目<br><img src="/picture/image-10.png" alt="小山丘的秘密"><br>flag.txt<br>bugku{PLGTGBQHM}<br>其中A=1，flag全为小写</p>
 <p>解题过程<br>1、根据提示知道这是希尔（hill）密码<a target="_blank" rel="noopener" href="http://www.atoolbox.net/Tool.php?Id=914&amp;ac=csdn">在线解密</a><br>根据flag.txt中A=1,一般希尔密码是A=0,B=1,C=2…所以字母表改成Z=0,A=1,B=2…<br>2、发现希尔密码还缺少密钥，密钥肯定在图片中，密钥根据小山丘的秘密的图片可以得到<img src="/picture/image-11.png" alt="密钥"><br>3、<img src="/picture/image-12.png" alt="希尔密码"><br>bugku{whatahill}</p>
+<h2 id="9、EN-气泡"><a href="#9、EN-气泡" class="headerlink" title="9、EN-气泡"></a>9、EN-气泡</h2><p>题目<br>EN-气泡.txt</p>
+<pre><code>xivak-notuk-cupad-tarek-zesuk-zupid-taryk-zesak-cined-tetuk-nasuk-zoryd-tirak-zysek-zaryd-tyrik-nisyk-nenad-tituk-nysil-hepyd-tovak-zutik-cepyd-toral-husol-henud-titak-hesak-nyrud-tarik-netak-zapad-tupek-hysek-zuned-tytyk-zisuk-hyped-tymik-hysel-hepad-tomak-zysil-nunad-tytak-nirik-copud-tevok-zasyk-nypud-tyruk-niryk-henyd-tityk-zyral-nyred-taryk-zesek-corid-tipek-zysek-nunad-tytal-hitul-hepod-tovik-zurek-hupyd-tavil-hesuk-zined-tetuk-zatel-hopod-tevul-haruk-cupod-tavuk-zesol-ninid-tetok-nasyl-hopid-teryl-nusol-heped-tovuk-hasil-nenod-titek-zyryl-hiped-tivyk-cosok-zorud-tirel-hyrel-hinid-tetok-hirek-zyped-tyrel-hitul-nyrad-tarak-hotok-cuvux
+</code></pre>
+<p>1、根据题目得知这是BubbleBabble加密<br>2、在线解密<a target="_blank" rel="noopener" href="http://ctf.ssleye.com/bubble.html">BubbleBabble</a><br>俄罗斯套娃套了三层<br><img src="/picture/image-13.png" alt="EN-气泡"><br>bugku{th1s_1s_A_Bubb13}</p>
 
                 
             </div>
