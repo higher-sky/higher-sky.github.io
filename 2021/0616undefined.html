@@ -533,6 +533,10 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
 <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#hosectf{91d6ad02-ef30-4953-9c21-5cf60169971a}</span>
 </code></pre>
+<h2 id="simple-bc"><a href="#simple-bc" class="headerlink" title="simple_bc"></a>simple_bc</h2><p>题目<br><img src="/images/image-103.png" alt="题目"></p>
+<p>解题过程<br>1、这是会长从ciscn2021国赛上复现改编的一道题目，难！！！<br>2、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ren-ctfnote/p/14948764.html">wp1</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43363675/article/details/116940992">wp2</a><br>3、我还没弄懂先留在这吧！</p>
+<h2 id="湖南科技学院2021-upx-re"><a href="#湖南科技学院2021-upx-re" class="headerlink" title="[湖南科技学院2021]upx_re"></a>[湖南科技学院2021]upx_re</h2><p>题目<br><img src="/images/image-104.png" alt="题目"></p>
+<p>1、<strong>知识点</strong>：先学习一下ELF文件<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cdcode/p/5551649.html">linux-ELF</a><br>2、先用程序进行查壳，发现有upx壳<br>百度网盘下载链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1i4Z5frn">https://pan.baidu.com/s/1i4Z5frn</a> 密码: wwyf<br><img src="/images/image-105.png" alt="查壳"><br>3、尝试拖入ida64查看程序结构，发现函数很少：<br><img src="/images/image-106.png" alt="ida"><br>原本想Alt+t在16进制文本搜索一下发现找不到flag<br>4、还是老老实实脱壳吧<br>UPX 软件的 <a target="_blank" rel="noopener" href="https://github.com/upx/upx/releases/tag/v3.96">Github下载地址</a>，拿来即可食用：<br><img src="/images/image-107.png" alt="upx"><br>还Cmder的安装教程<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dxqNet/p/11388209.html">教程</a><a target="_blank" rel="noopener" href="https://cmder.net/">下载地址</a><br>然后利用工具进行脱壳<br><img src="/images/image-108.png" alt="脱壳"><br>再将脱壳完的文件拖入ida一眼就可以看到flag了<br><img src="/images/image-109.png" alt="ida"><br>husectf{791802a8-4e1d-4b78-8233-769e59097f03}</p>
 
                 
             </div>

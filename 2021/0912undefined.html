@@ -1380,6 +1380,52 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
 <span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#BJD{r3a_C0mmoN_moD@_4ttack}</span>
 </code></pre>
+<h2 id="56、-ACTF新生赛2020-crypto-rsa0"><a href="#56、-ACTF新生赛2020-crypto-rsa0" class="headerlink" title="56、[ACTF新生赛2020]crypto-rsa0"></a>56、[ACTF新生赛2020]crypto-rsa0</h2><p>题目<br>ouput</p>
+<pre><code>9018588066434206377240277162476739271386240173088676526295315163990968347022922841299128274551482926490908399237153883494964743436193853978459947060210411
+7547005673877738257835729760037765213340036696350766324229143613179932145122130685778504062410137043635958208805698698169847293520149572605026492751740223
+50996206925961019415256003394743594106061473865032792073035954925875056079762626648452348856255575840166640519334862690063949316515750256545937498213476286637455803452890781264446030732369871044870359838568618176586206041055000297981733272816089806014400846392307742065559331874972274844992047849472203390350
+</code></pre>
+<p><img src="/images/image-101.png" alt="题目"><br><img src="/images/image-102.png" alt="hint"><br>1、<strong>知识点</strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/u011377996/article/details/79286958">伪加密</a><br>2、根据前面所学的伪加密的知识用010editor打开压缩包将所有的14 00 09 00改为14 00 00 00 然后就可以得到rsa0.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Cryptodome<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">import</span> random
+
+FLAG<span class="token operator">=</span><span class="token comment" spellcheck="true">#hidden, please solve it</span>
+flag<span class="token operator">=</span>int<span class="token punctuation">.</span>from_bytes<span class="token punctuation">(</span>FLAG<span class="token punctuation">,</span>byteorder <span class="token operator">=</span> <span class="token string">'big'</span><span class="token punctuation">)</span>
+
+
+p<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
+q<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span>
+N<span class="token operator">=</span>p<span class="token operator">*</span>q
+e<span class="token operator">=</span><span class="token number">65537</span>
+enc <span class="token operator">=</span> pow<span class="token punctuation">(</span>flag<span class="token punctuation">,</span>e<span class="token punctuation">,</span>N<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>enc<span class="token punctuation">)</span>
+</code></pre>
+<p>3、根据题目和rsa0.py的加密算法，写解密脚本如下</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+p <span class="token operator">=</span> <span class="token number">9018588066434206377240277162476739271386240173088676526295315163990968347022922841299128274551482926490908399237153883494964743436193853978459947060210411</span>
+
+q <span class="token operator">=</span> <span class="token number">7547005673877738257835729760037765213340036696350766324229143613179932145122130685778504062410137043635958208805698698169847293520149572605026492751740223</span>
+
+c <span class="token operator">=</span> <span class="token number">50996206925961019415256003394743594106061473865032792073035954925875056079762626648452348856255575840166640519334862690063949316515750256545937498213476286637455803452890781264446030732369871044870359838568618176586206041055000297981733272816089806014400846392307742065559331874972274844992047849472203390350</span>
+
+e <span class="token operator">=</span> <span class="token number">65537</span>
+
+n <span class="token operator">=</span> p<span class="token operator">*</span>q 
+
+phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+
+d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#actf{n0w_y0u_see_RSA}</span>
+</code></pre>
 
                 
             </div>

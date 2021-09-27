@@ -6,7 +6,7 @@
   <link href="http://higher-sky.github.io/atom.xml" rel="self"/>
   
   <link href="http://higher-sky.github.io/"/>
-  <updated>2021-09-27T01:47:10.793Z</updated>
+  <updated>2021-09-27T11:43:10.653Z</updated>
   <id>http://higher-sky.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bugku-reverse</title>
+    <link href="http://higher-sky.github.io/2021/0927undefined.html"/>
+    <id>http://higher-sky.github.io/2021/0927undefined.html</id>
+    <published>2021-09-27T06:57:24.000Z</published>
+    <updated>2021-09-27T11:43:10.653Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1、入门逆向&quot;&gt;&lt;a href=&quot;#1、入门逆向&quot; class=&quot;headerlink&quot; title=&quot;1、入门逆向&quot;&gt;&lt;/a&gt;1、入门逆向&lt;/h2&gt;&lt;p&gt;题目&lt;br&gt;&lt;img src=&quot;/reverse/1.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="reverse" scheme="http://higher-sky.github.io/categories/reverse/"/>
+    
+    
+    <category term="reverse" scheme="http://higher-sky.github.io/tags/reverse/"/>
+    
+  </entry>
   
   <entry>
     <title>bugku</title>
@@ -46,7 +71,7 @@
     <link href="http://higher-sky.github.io/2021/0912undefined.html"/>
     <id>http://higher-sky.github.io/2021/0912undefined.html</id>
     <published>2021-09-12T11:16:39.000Z</published>
-    <updated>2021-09-26T13:10:14.197Z</updated>
+    <updated>2021-09-27T07:54:39.858Z</updated>
     
     
       
@@ -117,7 +142,7 @@
     <link href="http://higher-sky.github.io/2021/0616undefined.html"/>
     <id>http://higher-sky.github.io/2021/0616undefined.html</id>
     <published>2021-06-15T16:00:00.000Z</published>
-    <updated>2021-09-26T13:46:41.053Z</updated>
+    <updated>2021-09-27T13:50:11.508Z</updated>
     
     
       
