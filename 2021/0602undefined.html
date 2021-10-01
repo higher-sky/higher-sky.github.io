@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="RSA, sky">
+    <meta name="keywords" content="misc, sky">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>RSA | sky</title>
+    <title>misc | sky</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -328,12 +328,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">RSA</h1>
+                    <h1 class="description center-align post-title">misc</h1>
                 </div>
             </div>
         </div>
@@ -449,8 +449,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/RSA/">
-                                <span class="chip bg-color">RSA</span>
+                            <a href="/tags/misc/">
+                                <span class="chip bg-color">misc</span>
                             </a>
                         
                     </div>
@@ -461,8 +461,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/RSA/" class="post-category">
-                                RSA
+                            <a href="/categories/misc/" class="post-category">
+                                misc
                             </a>
                         
                     </div>
@@ -510,52 +510,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-公钥解析，签名加密"><a href="#1-公钥解析，签名加密" class="headerlink" title="1.公钥解析，签名加密"></a>1.公钥解析，签名加密</h2><p>如果题目给了文件后缀名pem或者题干文件带有KEY的文件，就可以使用Linux自带的工具openssl,提取出n和e。</p>
-<pre><code>openssl rsa -pubin -text -modulus -in warmup -in pubkey.pem
-</code></pre>
-<p>还有一个就是用在线的公钥解析<a target="_blank" rel="noopener" href="http://ctf.ssleye.com/pub_asys.html">公钥解析</a><br>得到n和e之后，用在线分解的网站<a target="_blank" rel="noopener" href="http://www.factordb.com/index.php">factordb</a><br>得到p,q<br>然后密文c可能是一个flag.enc的文件直接用winhex或者010把密文转化成16进制。<br>一般解题脚本</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
-n <span class="token operator">=</span>
-e <span class="token operator">=</span>
-c <span class="token operator">=</span> 
-p <span class="token operator">=</span>
-q <span class="token operator">=</span>
-phi <span class="token operator">=</span> <span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
-d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#计算出私钥</span>
-m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#计算出明文m</span>
-flag<span class="token operator">=</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-</code></pre>
-<p>2021萌新赛–凛冬以至</p>
-<h2 id="2-利用公约数求解"><a href="#2-利用公约数求解" class="headerlink" title="2.利用公约数求解"></a>2.利用公约数求解</h2><p>如果题目提供两次公钥解密过程使用的n1和n2具有相同的素数因子，可以利用欧几里得算法的到一个公约数p，然后就可以把n1和n2分解了</p>
-<pre class=" language-python"><code class="language-python">p<span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>gcd<span class="token punctuation">(</span>n1<span class="token punctuation">,</span>n2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#gmpy2的gcd，用于求最大公约数。</span>
-</code></pre>
-<p>自定义函数gcd()欧几里得算法</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">gcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> a<span class="token operator">&lt;</span>b<span class="token punctuation">:</span>
-        a<span class="token punctuation">,</span>b <span class="token operator">=</span> b<span class="token punctuation">,</span>a
-    <span class="token keyword">while</span><span class="token punctuation">(</span>b<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        temp <span class="token operator">=</span> a<span class="token operator">%</span>b
-        a <span class="token operator">=</span> b
-        b <span class="token operator">=</span> temp
-    <span class="token keyword">return</span> a
-</code></pre>
-<h2 id="3-分解N得到多个相同的P"><a href="#3-分解N得到多个相同的P" class="headerlink" title="3.分解N得到多个相同的P"></a>3.分解N得到多个相同的P</h2><p>1.欧拉函数的性质：<br>p为素数，n=p^a 所以 φ(n)=(p−1)∗p^(a−1)=p^a−p^(a−1)<br>φ(n)=(p1-1) * (p2-1)* (p3-1)</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> gmpy2
-<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> long_to_bytes
- 
-n<span class="token operator">=</span> 
-e<span class="token operator">=</span> 
-c<span class="token operator">=</span> 
-p1 <span class="token operator">=</span> 
-p2 <span class="token operator">=</span> 
-p3 <span class="token operator">=</span> 
-phi <span class="token operator">=</span> <span class="token punctuation">(</span>p1<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>p2<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>p3<span class="token number">-1</span><span class="token punctuation">)</span>  
-d <span class="token operator">=</span> gmpy2<span class="token punctuation">.</span>invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span> phi<span class="token punctuation">)</span>  
-m <span class="token operator">=</span> pow<span class="token punctuation">(</span>c<span class="token punctuation">,</span> d<span class="token punctuation">,</span> n<span class="token punctuation">)</span>  
-<span class="token keyword">print</span> （long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+                <h2 id="湖南科技学院2021-lsb"><a href="#湖南科技学院2021-lsb" class="headerlink" title="[湖南科技学院2021]lsb"></a>[湖南科技学院2021]lsb</h2><p>题目<br><img src="/images/lsb.png" alt="lsb"><br>把题目文件下载下来，直接拖入Stegsolve<br><img src="/images/image-23.png" alt="Image text"><br>然后用010editor查看的到flag<br><img src="/images/image-24.png" alt="Image text"></p>
 
                 
             </div>
@@ -620,8 +575,8 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/RSA/">
-                                    <span class="chip bg-color">RSA</span>
+                                <a href="/tags/misc/">
+                                    <span class="chip bg-color">misc</span>
                                 </a>
                             
                         </div>
@@ -797,13 +752,13 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/0602undefined.html">
+                <a href="/2021/0603undefined.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="misc">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="攻防世界(crypto)">
                         
-                        <span class="card-title">misc</span>
+                        <span class="card-title">攻防世界(crypto)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -814,16 +769,12 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/misc/" class="post-category">
-                                    misc
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            浅酌
                             
                         </span>
                     </div>
@@ -831,8 +782,8 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/misc/">
-                        <span class="chip bg-color">misc</span>
+                    <a href="/tags/crypto/">
+                        <span class="chip bg-color">crypto</span>
                     </a>
                     
                 </div>
@@ -1123,7 +1074,7 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">17.1k</span>
+                        class="white-color">17.8k</span>
             
             
             
