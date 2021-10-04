@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    40 分
+                    41 分
                 </div>
                 
 
@@ -1437,6 +1437,32 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
 
 <span class="token comment" spellcheck="true">#actf{n0w_y0u_see_RSA}</span>
 </code></pre>
+<h2 id="57、-MRCTF2020-keyboard"><a href="#57、-MRCTF2020-keyboard" class="headerlink" title="57、[MRCTF2020]keyboard"></a>57、[MRCTF2020]keyboard</h2><p>题目<br>keyboard.txt</p>
+<pre><code>得到的flag用
+MRCTF{xxxxxx}形式上叫
+都为小写字母
+
+6
+666
+22
+444
+555
+33
+7
+44
+666
+66
+3
+</code></pre>
+<p>解题过程<br>1、根据题目提示发现这是键盘密码，之前也写过相类似的题目<br>所以这次我就不做过多解释了直接上脚本</p>
+<pre class=" language-python"><code class="language-python">str<span class="token operator">=</span><span class="token string">"6 666 22 444 555 33 7 44 666 66 33"</span>
+a<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">" "</span><span class="token punctuation">,</span><span class="token string">" "</span><span class="token punctuation">,</span><span class="token string">"abc"</span><span class="token punctuation">,</span><span class="token string">"def"</span><span class="token punctuation">,</span><span class="token string">"ghi"</span><span class="token punctuation">,</span><span class="token string">"jkl"</span><span class="token punctuation">,</span><span class="token string">"mno"</span><span class="token punctuation">,</span><span class="token string">"pqrs"</span><span class="token punctuation">,</span><span class="token string">"tuv"</span><span class="token punctuation">,</span><span class="token string">"wxyz"</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  s<span class="token operator">=</span>int<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  count<span class="token operator">=</span>len<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">[</span>count<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#flag{mobilephone}</span>
+</code></pre>
 
                 
             </div>
@@ -2004,7 +2030,7 @@ m <span class="token operator">=</span> pow<span class="token punctuation">(</sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18.2k</span>
+                        class="white-color">18.9k</span>
             
             
             
