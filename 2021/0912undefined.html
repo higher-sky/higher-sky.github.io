@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    41 分
+                    42 分
                 </div>
                 
 
@@ -1463,6 +1463,78 @@ a<span class="token operator">=</span><span class="token punctuation">[</span><s
   <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>s<span class="token punctuation">]</span><span class="token punctuation">[</span>count<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true">#flag{mobilephone}</span>
 </code></pre>
+<h2 id="58、-WUSTCTF2020-babyrsa"><a href="#58、-WUSTCTF2020-babyrsa" class="headerlink" title="58、[WUSTCTF2020]babyrsa"></a>58、[WUSTCTF2020]babyrsa</h2><p>题目</p>
+<pre><code>c = 28767758880940662779934612526152562406674613203406706867456395986985664083182
+n = 73069886771625642807435783661014062604264768481735145873508846925735521695159
+e = 65537
+</code></pre>
+<p>解题过程<br>1、从题目可以看出这是一道rsa加密的题目，直接写脚本<br>现在在线分解n得到p,q<a target="_blank" rel="noopener" href="http://www.factordb.com/">factordb</a></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span><span class="token operator">*</span>
+<span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span><span class="token operator">*</span>
+
+c <span class="token operator">=</span> <span class="token number">28767758880940662779934612526152562406674613203406706867456395986985664083182</span>
+n <span class="token operator">=</span> <span class="token number">73069886771625642807435783661014062604264768481735145873508846925735521695159</span>
+e <span class="token operator">=</span> <span class="token number">65537</span>
+p <span class="token operator">=</span> <span class="token number">189239861511125143212536989589123569301</span>
+q <span class="token operator">=</span> <span class="token number">386123125371923651191219869811293586459</span>
+
+phi <span class="token operator">=</span><span class="token punctuation">(</span>p<span class="token number">-1</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>q<span class="token number">-1</span><span class="token punctuation">)</span>
+
+d <span class="token operator">=</span> invert<span class="token punctuation">(</span>e<span class="token punctuation">,</span>phi<span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> pow <span class="token punctuation">(</span>c<span class="token punctuation">,</span>d<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#wctf2020{just_@_piece_0f_cak3}</span>
+</code></pre>
+<h2 id="59、RSA4"><a href="#59、RSA4" class="headerlink" title="59、RSA4"></a>59、RSA4</h2><p>题目</p>
+<pre><code>N = 331310324212000030020214312244232222400142410423413104441140203003243002104333214202031202212403400220031202142322434104143104244241214204444443323000244130122022422310201104411044030113302323014101331214303223312402430402404413033243132101010422240133122211400434023222214231402403403200012221023341333340042343122302113410210110221233241303024431330001303404020104442443120130000334110042432010203401440404010003442001223042211442001413004 
+c = 310020004234033304244200421414413320341301002123030311202340222410301423440312412440240244110200112141140201224032402232131204213012303204422003300004011434102141321223311243242010014140422411342304322201241112402132203101131221223004022003120002110230023341143201404311340311134230140231412201333333142402423134333211302102413111111424430032440123340034044314223400401224111323000242234420441240411021023100222003123214343030122032301042243
+
+N = 302240000040421410144422133334143140011011044322223144412002220243001141141114123223331331304421113021231204322233120121444434210041232214144413244434424302311222143224402302432102242132244032010020113224011121043232143221203424243134044314022212024343100042342002432331144300214212414033414120004344211330224020301223033334324244031204240122301242232011303211220044222411134403012132420311110302442344021122101224411230002203344140143044114 
+c = 112200203404013430330214124004404423210041321043000303233141423344144222343401042200334033203124030011440014210112103234440312134032123400444344144233020130110134042102220302002413321102022414130443041144240310121020100310104334204234412411424420321211112232031121330310333414423433343322024400121200333330432223421433344122023012440013041401423202210124024431040013414313121123433424113113414422043330422002314144111134142044333404112240344
+
+N = 332200324410041111434222123043121331442103233332422341041340412034230003314420311333101344231212130200312041044324431141033004333110021013020140020011222012300020041342040004002220210223122111314112124333211132230332124022423141214031303144444134403024420111423244424030030003340213032121303213343020401304243330001314023030121034113334404440421242240113103203013341231330004332040302440011324004130324034323430143102401440130242321424020323 
+c = 10013444120141130322433204124002242224332334011124210012440241402342100410331131441303242011002101323040403311120421304422222200324402244243322422444414043342130111111330022213203030324422101133032212042042243101434342203204121042113212104212423330331134311311114143200011240002111312122234340003403312040401043021433112031334324322123304112340014030132021432101130211241134422413442312013042141212003102211300321404043012124332013240431242
+</code></pre>
+<p>解题过程<br><strong>知识点：</strong>低加密指数广播攻击<br>1、这是rsa加密类型中的低加密指数广播攻击<br>2、直接写脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> gmpy2 <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> libnum <span class="token keyword">import</span> <span class="token operator">*</span>
+<span class="token keyword">from</span> functools <span class="token keyword">import</span> reduce
+
+<span class="token comment" spellcheck="true"># 将5进制数转换为10进制数  int('',5)</span>
+N1 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'331310324212000030020214312244232222400142410423413104441140203003243002104333214202031202212403400220031202142322434104143104244241214204444443323000244130122022422310201104411044030113302323014101331214303223312402430402404413033243132101010422240133122211400434023222214231402403403200012221023341333340042343122302113410210110221233241303024431330001303404020104442443120130000334110042432010203401440404010003442001223042211442001413004'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+c1 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'310020004234033304244200421414413320341301002123030311202340222410301423440312412440240244110200112141140201224032402232131204213012303204422003300004011434102141321223311243242010014140422411342304322201241112402132203101131221223004022003120002110230023341143201404311340311134230140231412201333333142402423134333211302102413111111424430032440123340034044314223400401224111323000242234420441240411021023100222003123214343030122032301042243'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+N2 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'302240000040421410144422133334143140011011044322223144412002220243001141141114123223331331304421113021231204322233120121444434210041232214144413244434424302311222143224402302432102242132244032010020113224011121043232143221203424243134044314022212024343100042342002432331144300214212414033414120004344211330224020301223033334324244031204240122301242232011303211220044222411134403012132420311110302442344021122101224411230002203344140143044114'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+c2 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'112200203404013430330214124004404423210041321043000303233141423344144222343401042200334033203124030011440014210112103234440312134032123400444344144233020130110134042102220302002413321102022414130443041144240310121020100310104334204234412411424420321211112232031121330310333414423433343322024400121200333330432223421433344122023012440013041401423202210124024431040013414313121123433424113113414422043330422002314144111134142044333404112240344'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+N3 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'332200324410041111434222123043121331442103233332422341041340412034230003314420311333101344231212130200312041044324431141033004333110021013020140020011222012300020041342040004002220210223122111314112124333211132230332124022423141214031303144444134403024420111423244424030030003340213032121303213343020401304243330001314023030121034113334404440421242240113103203013341231330004332040302440011324004130324034323430143102401440130242321424020323'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+c3 <span class="token operator">=</span> int<span class="token punctuation">(</span><span class="token string">'10013444120141130322433204124002242224332334011124210012440241402342100410331131441303242011002101323040403311120421304422222200324402244243322422444414043342130111111330022213203030324422101133032212042042243101434342203204121042113212104212423330331134311311114143200011240002111312122234340003403312040401043021433112031334324322123304112340014030132021432101130211241134422413442312013042141212003102211300321404043012124332013240431242'</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+e<span class="token operator">=</span><span class="token number">3</span>
+
+n <span class="token operator">=</span> <span class="token punctuation">[</span>N1<span class="token punctuation">,</span>N2<span class="token punctuation">,</span>N3<span class="token punctuation">]</span>
+c <span class="token operator">=</span> <span class="token punctuation">[</span>c1<span class="token punctuation">,</span>c2<span class="token punctuation">,</span>c3<span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">CRT</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sum <span class="token operator">=</span> <span class="token number">0</span>
+    N <span class="token operator">=</span> reduce<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span>y<span class="token punctuation">:</span>x<span class="token operator">*</span>y<span class="token punctuation">,</span>n<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># ni 的乘积,N=n1*n2*n3</span>
+
+    <span class="token keyword">for</span> n_i<span class="token punctuation">,</span> a_i <span class="token keyword">in</span> zip<span class="token punctuation">(</span>n<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token comment" spellcheck="true"># zip()将对象打包成元组</span>
+        N_i <span class="token operator">=</span> N <span class="token operator">//</span> n_i           <span class="token comment" spellcheck="true">#Mi=M/ni</span>
+        sum <span class="token operator">+=</span> a_i<span class="token operator">*</span>N_i<span class="token operator">*</span>invert<span class="token punctuation">(</span>N_i<span class="token punctuation">,</span>n_i<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">#sum=C1M1y1+C2M2y2+C3M3y3</span>
+    <span class="token keyword">return</span> sum <span class="token operator">%</span> N 
+
+x <span class="token operator">=</span> CRT<span class="token punctuation">(</span>c<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+
+m <span class="token operator">=</span> iroot<span class="token punctuation">(</span>x<span class="token punctuation">,</span>e<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true">#开e次方根</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">)</span>               <span class="token comment" spellcheck="true">#数值转字符串</span>
+
+<span class="token comment" spellcheck="true">#noxCTF{D4mn_y0u_h4s74d_wh47_4_b100dy_b4s74rd!}</span>
+</code></pre>
 
                 
             </div>
@@ -2030,7 +2102,7 @@ a<span class="token operator">=</span><span class="token punctuation">[</span><s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18.9k</span>
+                        class="white-color">21k</span>
             
             
             

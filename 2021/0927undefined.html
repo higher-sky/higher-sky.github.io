@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -546,6 +546,74 @@ flag <span class="token operator">=</span> <span class="token string">""</span>
 <p>3、也可以直接玩这个游戏，15786234\12345678<br><img src="/reverse/12.png" alt="玩游戏"></p>
 <h2 id="5、Easy-vb"><a href="#5、Easy-vb" class="headerlink" title="5、Easy_vb"></a>5、Easy_vb</h2><p>题目<br><img src="/reverse/13.png" alt="题目"></p>
 <p>解题过程<br>1、先用查壳工具，发现没有壳<br><img src="/reverse/14.png" alt="查壳"><br>2、再拖入IDA滑动几页就找到flag了<br><img src="/reverse/15.png" alt="IDA"><br>MCTF{<em>N3t_Rev_1s_E4ay</em>}</p>
+<h2 id="6、Timer-阿里CTF"><a href="#6、Timer-阿里CTF" class="headerlink" title="6、Timer(阿里CTF)"></a>6、Timer(阿里CTF)</h2><p>题目<br><img src="/picture/16.png" alt="题目"></p>
+<p>解题过程<br>1、看真题吗是一个APK文件所以直接把文件放进JEB中进行安卓逆向分析<br>进入MainActivity在将代码反汇编成Java,发现有一个计时的函数currentTimeMillis()<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cherryljr/p/6802177.html">函数学习</a><br>大概的意思说的就是这个计算出当前时间并增加20000秒后就会自己运行出flag了<br><img src="/reverse/17.png" alt="jeb分析"><br>从这里分析，发现这个程序增减了20000秒后是由is2()函数进行控制的，现在写一个脚本模拟is2方法计算k的值</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">test</span><span class="token punctuation">{</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">is2</span><span class="token punctuation">(</span><span class="token keyword">int</span> arg4<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> v1 <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>arg4 <span class="token operator">></span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>arg4 <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> arg4 <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">int</span> v0 <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+                <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>v0 <span class="token operator">*</span> v0 <span class="token operator">&lt;=</span> arg4<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">if</span><span class="token punctuation">(</span>arg4 <span class="token operator">%</span> v0 <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> arg4 <span class="token operator">%</span> <span class="token punctuation">(</span>v0 <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                            v0 <span class="token operator">+=</span> <span class="token number">6</span><span class="token punctuation">;</span>
+                            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+
+                        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">return</span> v1<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+
+             <span class="token comment" spellcheck="true">//这里有个return false，是反编译错误了，用jd-gui反编译一下也可以   </span>
+            <span class="token punctuation">}</span>
+
+            v1 <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>arg4 <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            v1 <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> v1<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> time <span class="token operator">=</span> <span class="token number">200000</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>time <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is2</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                k <span class="token operator">+=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+                k<span class="token operator">--</span><span class="token punctuation">;</span>
+            
+            time<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>得到k=1616384</p>
+<p>2、再根据大佬的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaochaofang/p/14455925.html">博客</a>在Android killer 里面修改参数后，再编译，一定要找到这在编译的apk文件吧，不然打开只有倒计时的<br><img src="/reverse/18.png" alt="bluestack"><br>所以flag是alictf{Y0vAr3TimerMa3te7}</p>
+<h2 id="7、逆向入门"><a href="#7、逆向入门" class="headerlink" title="7、逆向入门"></a>7、逆向入门</h2><p>题目<br><img src="/reverse/19.png" alt="题目"></p>
+<p>解题过程<br>1、发现是可执行文件直接拖入IDA工具里面分析，发现里面只有base加密的<br>然后用010editor打开<br><img src="/reverse/20.png" alt="admin用编辑器打开"><br>确认就是base加密然后用<a target="_blank" rel="noopener" href="https://tool.jisuapi.com/base642pic.html">在线base64转图片</a><br><img src="/reverse/21.png" alt="解密"><br>然后再用QR Research工具扫描二维码<br><img src="/reverse/22.png" alt="扫码"><br>bugku{inde_9882ihsd8-0}</p>
+<h2 id="8、love"><a href="#8、love" class="headerlink" title="8、love"></a>8、love</h2><p>题目<br><img src="/reverse/23.png" alt="题目"></p>
+<p>解题过程<br>1、看到题目是可执行文件可以先查壳再拖入IDA进行分析<br><img src="/reverse/24.png" alt="查壳"><br>发现没有壳<br>2、进入IDA进行分析，先用shift+F12字符，找寻flag，然后发现flag用了base64加密。<br><img src="/reverse/25.png" alt="IDA"><br>找到主函数main用F5将汇编与语言反汇编成C语言<br><img src="/reverse/26.png" alt="IDA"><br>通过分析得到，就是input输入的字符串Str1先进行base加密，再与传Str2进行比较 若相等则输出“right flag!”<br><img src="/reverse/27.png" alt="IDA"><br>3、写python脚本进行解密</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> base64 <span class="token keyword">import</span><span class="token operator">*</span>
+s<span class="token operator">=</span><span class="token string">'e3nifIH9b_C@n@dH'</span>
+flag <span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag<span class="token operator">+=</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span>i<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>b64decode<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#bugku{i_l0ve_you}</span>
+</code></pre>
 
                 
             </div>
@@ -1115,7 +1183,7 @@ flag <span class="token operator">=</span> <span class="token string">""</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">18.9k</span>
+                        class="white-color">21k</span>
             
             
             
