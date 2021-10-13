@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    26 分
+                    27 分
                 </div>
                 
 
@@ -935,6 +935,22 @@ KRj3HICgP9TamNDTQlgUpw==
 </code></pre>
 <p>解密过程<br>1、我刚开始也是使用在线解密但是发现文本太长了<br>所以上网查了wp<a target="_blank" rel="noopener" href="https://blog.csdn.net/pdsu161530247/article/details/74640746">网上大佬</a><br>所以我就用了Converter工具</p>
 <p>2、最后再用Unicode解码<br><a target="_blank" rel="noopener" href="http://tool.chinaz.com/tools/unicode.aspx">Unicode</a><br><img src="/picture/imgae-45.png" alt="Unicode"><br>flag%7Bctf_tfc201717qwe%7D<br>flag{ctf_tfc201717qwe}</p>
+<h2 id="24、奇怪的密码"><a href="#24、奇怪的密码" class="headerlink" title="24、奇怪的密码"></a>24、奇怪的密码</h2><p>题目<br>突然天上一道雷电 gndk€rlqhmtkwwp}z</p>
+<p>解题过程<br><strong>知识点</strong>：雷池编码</p>
+<pre><code>一个简单的字符转换加密，雷池网站系统使用的较多，姑且称之雷池加密。它加密的原理是对字串的Asc和chr之间的转换。可能有些朋友会遇到bfpms，bfpms&gt;?@之类的加密，那么他就是admin,admin888的加密字符了。
+</code></pre>
+<p>1、<a target="_blank" rel="noopener" href="https://www.daokers.com/article/original/2306.html">雷池解密工具</a><br>2、然后直接用工具解密就OK了<br><img src="/picture/image-46.png" alt="解密"><br>flag{lei_ci_jiami}</p>
+<h2 id="25、Funny-Number"><a href="#25、Funny-Number" class="headerlink" title="25、Funny Number"></a>25、Funny Number</h2><p>题目<br>task.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#######################</span>
+<span class="token comment" spellcheck="true"># @Author: Lazzaro</span>
+<span class="token comment" spellcheck="true">#######################</span>
+
+<span class="token keyword">from</span> secret <span class="token keyword">import</span> flag
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>int<span class="token punctuation">(</span>str<span class="token punctuation">(</span>int<span class="token punctuation">.</span>from_bytes<span class="token punctuation">(</span>str<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> byteorder<span class="token operator">=</span><span class="token string">'little'</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">175</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#5390734306631855467986187436983737752151008395372308788862499432056740530367025683371238030400935613581745610066222336578420939008918998541409247659187704647583389480103444480</span>
+</code></pre>
 
                 
             </div>
@@ -1502,7 +1518,7 @@ KRj3HICgP9TamNDTQlgUpw==
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.4k</span>
+                        class="white-color">23.2k</span>
             
             
             

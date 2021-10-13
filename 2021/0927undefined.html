@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -612,7 +612,32 @@ flag <span class="token operator">=</span><span class="token string">''</span>
     flag<span class="token operator">+=</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span>i<span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>b64decode<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#bugku{i_l0ve_you}</span>
+<span class="token comment" spellcheck="true">#flag{i_l0ve_you}</span>
+</code></pre>
+<h2 id="9、mobile1-gctf"><a href="#9、mobile1-gctf" class="headerlink" title="9、mobile1(gctf)"></a>9、mobile1(gctf)</h2><p>题目<br><img src="/reverse/28.png" alt="题目"></p>
+<p>解题过程<br>1、这是一个APK文件是一个典型的安卓逆向，直接将文件放入JEB里面分析<br><img src="/reverse/29.png" alt="JEB"><br>分析代码，计算v1的MD5，形成的MD5密文的字符串取偶数就是flag<br>在onCreate里面调用了checkSN函数，传进去的值是edit_username和edit_sn,edit_username就是v1<br><img src="/reverse/30.png" alt="JEB"></p>
+<p>2、用Python写MD5算法，求解flag</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> hashlib
+<span class="token keyword">import</span> string
+<span class="token keyword">def</span> <span class="token function">encrypt_md5</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    md<span class="token operator">=</span>hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    md<span class="token punctuation">.</span>update<span class="token punctuation">(</span>str<span class="token punctuation">.</span>encode<span class="token punctuation">(</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> md<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s <span class="token operator">=</span> <span class="token string">"Tenshine"</span>
+s <span class="token operator">=</span> encrypt_md5<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>len<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">:</span>
+        a<span class="token operator">+=</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag{'</span><span class="token operator">+</span>str<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'}'</span><span class="token punctuation">)</span>
+
+<span class="token triple-quoted-string string">'''
+b9c77224ff234f27ac6badf83b855c76
+32
+flag{bc72f242a6af3857}
+'''</span>
 </code></pre>
 
                 
@@ -1183,7 +1208,7 @@ flag <span class="token operator">=</span><span class="token string">''</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">21.4k</span>
+                        class="white-color">23.2k</span>
             
             
             
