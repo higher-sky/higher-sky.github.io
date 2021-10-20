@@ -6,7 +6,7 @@
   <link href="http://higher-sky.github.io/atom.xml" rel="self"/>
   
   <link href="http://higher-sky.github.io/"/>
-  <updated>2021-10-13T13:44:44.358Z</updated>
+  <updated>2021-10-14T01:40:41.538Z</updated>
   <id>http://higher-sky.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>bugku-misc</title>
+    <link href="http://higher-sky.github.io/2021/1014undefined.html"/>
+    <id>http://higher-sky.github.io/2021/1014undefined.html</id>
+    <published>2021-10-14T01:17:24.000Z</published>
+    <updated>2021-10-14T01:40:41.538Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&quot;1、社工-进阶收集&quot;&gt;&lt;a href=&quot;#1、社工-进阶收集&quot; class=&quot;headerlink&quot; title=&quot;1、社工-进阶收集&quot;&gt;&lt;/a&gt;1、社工-进阶收集&lt;/h2&gt;&lt;p&gt;题目&lt;br&gt;&lt;img src=&quot;/misc/1.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="bugku-misc" scheme="http://higher-sky.github.io/categories/bugku-misc/"/>
+    
+    
+    <category term="bugku-misc" scheme="http://higher-sky.github.io/tags/bugku-misc/"/>
+    
+  </entry>
   
   <entry>
     <title>Bugku-reverse</title>
@@ -73,7 +99,7 @@
     <link href="http://higher-sky.github.io/2021/0912undefined.html"/>
     <id>http://higher-sky.github.io/2021/0912undefined.html</id>
     <published>2021-09-12T11:16:39.000Z</published>
-    <updated>2021-10-13T13:10:23.685Z</updated>
+    <updated>2021-10-14T12:44:09.071Z</updated>
     
     
       
@@ -125,7 +151,7 @@
     <link href="http://higher-sky.github.io/2021/0714undefined.html"/>
     <id>http://higher-sky.github.io/2021/0714undefined.html</id>
     <published>2021-07-13T16:00:00.000Z</published>
-    <updated>2021-10-01T12:08:58.442Z</updated>
+    <updated>2021-10-14T13:09:37.865Z</updated>
     
     
       
@@ -133,13 +159,13 @@
         
         
     <summary type="html">&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h3 id=&quot;1、金三胖&quot;&gt;&lt;a href=&quot;#1、金三胖&quot; class=&quot;headerlink&quot;</summary>
+&lt;h2 id=&quot;1、金三胖&quot;&gt;&lt;a href=&quot;#1、金三胖&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
-    <category term="misc" scheme="http://higher-sky.github.io/categories/misc/"/>
+    <category term="buu-misc" scheme="http://higher-sky.github.io/categories/buu-misc/"/>
     
     
     <category term="buu" scheme="http://higher-sky.github.io/tags/buu/"/>
@@ -151,7 +177,7 @@
     <link href="http://higher-sky.github.io/2021/0616undefined.html"/>
     <id>http://higher-sky.github.io/2021/0616undefined.html</id>
     <published>2021-06-15T16:00:00.000Z</published>
-    <updated>2021-10-01T12:01:36.887Z</updated>
+    <updated>2021-10-20T14:55:03.967Z</updated>
     
     
       
@@ -166,7 +192,7 @@
     
     
     
-    <category term="协会平台" scheme="http://higher-sky.github.io/categories/%E5%8D%8F%E4%BC%9A%E5%B9%B3%E5%8F%B0/"/>
+    <category term="G1TH-reverse" scheme="http://higher-sky.github.io/categories/G1TH-reverse/"/>
     
     
     <category term="reverse" scheme="http://higher-sky.github.io/tags/reverse/"/>

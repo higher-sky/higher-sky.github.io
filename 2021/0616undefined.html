@@ -461,8 +461,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%8D%8F%E4%BC%9A%E5%B9%B3%E5%8F%B0/" class="post-category">
-                                协会平台
+                            <a href="/categories/G1TH-reverse/" class="post-category">
+                                G1TH-reverse
                             </a>
                         
                     </div>
@@ -542,12 +542,22 @@ ans <span class="token operator">=</span> <span class="token string">''</span>
 b <span class="token operator">=</span> <span class="token string">'1a124715424713110e464510130e171a16100e1a4011120e164045151312151a1a141242'</span>
 flag<span class="token operator">=</span>decode<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#hosectf{91d6ad02-ef30-4953-9c21-5cf60169971a}</span>
+<span class="token comment" spellcheck="true">#husectf{91d6ad02-ef30-4953-9c21-5cf60169971a}</span>
 </code></pre>
 <h2 id="simple-bc"><a href="#simple-bc" class="headerlink" title="simple_bc"></a>simple_bc</h2><p>题目<br><img src="/images/image-103.png" alt="题目"></p>
 <p>解题过程<br>1、这是会长从ciscn2021国赛上复现改编的一道题目，难！！！<br>2、<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ren-ctfnote/p/14948764.html">wp1</a>、<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43363675/article/details/116940992">wp2</a><br>3、我还没弄懂先留在这吧！</p>
 <h2 id="湖南科技学院2021-upx-re"><a href="#湖南科技学院2021-upx-re" class="headerlink" title="[湖南科技学院2021]upx_re"></a>[湖南科技学院2021]upx_re</h2><p>题目<br><img src="/images/image-104.png" alt="题目"></p>
 <p>1、<strong>知识点</strong>：先学习一下ELF文件<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cdcode/p/5551649.html">linux-ELF</a><br>2、先用程序进行查壳，发现有upx壳<br>百度网盘下载链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1i4Z5frn">https://pan.baidu.com/s/1i4Z5frn</a> 密码: wwyf<br><img src="/images/image-105.png" alt="查壳"><br>3、尝试拖入ida64查看程序结构，发现函数很少：<br><img src="/images/image-106.png" alt="ida"><br>原本想Alt+t在16进制文本搜索一下发现找不到flag<br>4、还是老老实实脱壳吧<br>UPX 软件的 <a target="_blank" rel="noopener" href="https://github.com/upx/upx/releases/tag/v3.96">Github下载地址</a>，拿来即可食用：<br><img src="/images/image-107.png" alt="upx"><br>还Cmder的安装教程<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dxqNet/p/11388209.html">教程</a><a target="_blank" rel="noopener" href="https://cmder.net/">下载地址</a><br>然后利用工具进行脱壳<br><img src="/images/image-108.png" alt="脱壳"><br>再将脱壳完的文件拖入ida一眼就可以看到flag了<br><img src="/images/image-109.png" alt="ida"><br>husectf{791802a8-4e1d-4b78-8233-769e59097f03}</p>
+<h2 id="湖南科技学院2021-easy-re"><a href="#湖南科技学院2021-easy-re" class="headerlink" title="[湖南科技学院2021]easy_re"></a>[湖南科技学院2021]easy_re</h2><p>题目<br><img src="/images/image-115.png" alt="题目"></p>
+<p>解题过程<br>1、题目文件是一个可执行文件，先查壳，再拖入IDA内进行分析,找到主函数用F5进行反汇编<br><img src="/imgaes/image-116.png" alt="IDA"><br><img src="/images/image-117.png" alt="IDA"><br>这个代码大概意思就是说flag是从键盘输入的，然后flag[i]-1和key[i]进行比较相等就是flag</p>
+<p>2、写Python脚本</p>
+<pre class=" language-python"><code class="language-python">flag<span class="token operator">=</span><span class="token string">''</span>
+key<span class="token operator">=</span><span class="token string">'c6dgdf:2.6539.5436.b3:3.d3gc858626e6'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range <span class="token punctuation">(</span>len<span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    flag<span class="token operator">+=</span>str<span class="token punctuation">(</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>key<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'husectf{'</span><span class="token operator">+</span>flag<span class="token operator">+</span><span class="token string">'}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#husectf{b5cfce91-5428-4325-a292-c2fb747515d5}</span>
+</code></pre>
 
                 
             </div>
@@ -812,8 +822,8 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/misc/" class="post-category">
-                                    misc
+                            <a href="/categories/buu-misc/" class="post-category">
+                                    buu-misc
                                 </a>
                             
                             
@@ -1111,7 +1121,7 @@ flag<span class="token operator">=</span>decode<span class="token punctuation">(
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.2k</span>
+                        class="white-color">23.4k</span>
             
             
             

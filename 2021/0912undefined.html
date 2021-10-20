@@ -485,7 +485,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    48 分
+                    49 分
                 </div>
                 
 
@@ -1675,6 +1675,42 @@ res <span class="token operator">=</span> <span class="token string">""</span>
 '''</span>
 <span class="token comment" spellcheck="true">#flag{南天菩萨放鹰捉猴头}</span>
 </code></pre>
+<h2 id="63、yxx"><a href="#63、yxx" class="headerlink" title="63、yxx"></a>63、yxx</h2><p>题目<br>密文.txt</p>
+<pre><code>V
+
+0
+0
+0
+
+</code></pre>
+<p>明文.txt</p>
+<pre><code>lovelovelovelovelovelovelovelove
+</code></pre>
+<p>解题过程<br>1、根据题目两个文本,猜测是两个文本异或<br>2、用010editor打开两个文件<br><img src="/images/image-111.png" alt="密文"><br><img src="/images/image-112.png" alt="明文"><br>3、写Python脚本</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> binascii
+
+a <span class="token operator">=</span> <span class="token string">'0000101000000011000101110000001001010110000000010001010100010001000010100001010000001110000010100001111000110000000011100000101000011110001100000000111000001010000111100011000000010100000011000001100100001101000111110001000000001110000001100000001100011000'</span>
+b <span class="token operator">=</span> <span class="token string">'0110110001101111011101100110010101101100011011110111011001100101011011000110111101110110011001010110110001101111011101100110010101101100011011110111011001100101011011000110111101110110011001010110110001101111011101100110010101101100011011110111011001100101'</span>
+
+<span class="token keyword">def</span> <span class="token function">xor</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ans <span class="token operator">=</span> <span class="token string">""</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            ans <span class="token operator">+=</span> <span class="token string">"0"</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            ans <span class="token operator">+=</span> <span class="token string">"1"</span>
+    <span class="token keyword">return</span> ans
+
+
+m <span class="token operator">=</span> xor<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+
+s <span class="token operator">=</span>str<span class="token punctuation">(</span>hex<span class="token punctuation">(</span>int<span class="token punctuation">(</span>m<span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#print(s)</span>
+s <span class="token operator">=</span><span class="token string">"666c61673a6e6374667b786f725f786f725f786f725f6269756269756269757d"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>binascii<span class="token punctuation">.</span>unhexlify<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#nctf{xor_xor_xor_biubiubiu}</span>
+</code></pre>
 
                 
             </div>
@@ -2242,7 +2278,7 @@ res <span class="token operator">=</span> <span class="token string">""</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.2k</span>
+                        class="white-color">23.4k</span>
             
             
             
